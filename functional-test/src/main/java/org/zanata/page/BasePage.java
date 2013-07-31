@@ -229,4 +229,13 @@ public class BasePage extends AbstractPage
       return getErrors();
    }
 
+   public void assertNoCriticalErrors()
+   {
+      List<WebElement> errors = getDriver().findElements(By.id("errorMessage"));
+      if (errors.size() > 0)
+      {
+         throw new RuntimeException("Critical error: \n"+errors.get(0).getText());
+      }
+   }
+
 }

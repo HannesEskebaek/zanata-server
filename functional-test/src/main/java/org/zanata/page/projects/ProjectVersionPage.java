@@ -39,6 +39,9 @@ public class ProjectVersionPage extends BasePage
    @FindBy(id = "iterationLanguageForm:data_table:tb")
    private WebElement localeTableTBody;
 
+   @FindBy(linkText = "Source Documents")
+   private WebElement sourceDocumentsButton;
+
    public ProjectVersionPage(final WebDriver driver)
    {
       super(driver);
@@ -105,5 +108,11 @@ public class ProjectVersionPage extends BasePage
          }
       }
       throw new IllegalArgumentException("can not translate locale: " + locale);
+   }
+
+   public ProjectSourceDocumentsPage goToSourceDocuments()
+   {
+      sourceDocumentsButton.click();
+      return new ProjectSourceDocumentsPage(getDriver());
    }
 }
